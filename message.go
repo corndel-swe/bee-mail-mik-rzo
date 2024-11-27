@@ -6,12 +6,13 @@ import (
 )
 
 type Message struct {
-	id string
+	id        string
 	timestamp time.Time
-	from *User
-	to *User
+	content   string
+	from      *User
+	to        *User
 	delivered bool
-	read bool
+	read      bool
 }
 
 func (message *Message) log() {

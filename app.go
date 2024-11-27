@@ -14,7 +14,7 @@ func (app *App) addUser(user *User) {
 	fmt.Printf("application state: \n%+v", *app)
 }
 
-func (app *App) findUser(userId string) (*User) {
+func (app *App) findUser(userId string) *User {
 	for _, user := range app.users {
 		if user.id == userId {
 			return user
@@ -26,7 +26,7 @@ func (app *App) findUser(userId string) (*User) {
 func (app *App) deliverMessage(senderId string, recipientId string, content string) {
 	sender := app.findUser(senderId)
 	recipient := app.findUser(recipientId)
-	message := Message{"0", time.Now(), sender, recipient, false, false}
+	message := Message{generateID(), time.Now(), content, sender, recipient, false, false}
 	recipient.receiveMessage(&message)
 	message.markDelivered()
 }
