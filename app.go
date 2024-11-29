@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -11,7 +10,6 @@ type App struct {
 
 func (app *App) addUser(user *User) {
 	app.users = append(app.users, user)
-	fmt.Printf("application state: \n%+v", *app)
 }
 
 func (app *App) findUser(userID string) *User {
