@@ -1,10 +1,10 @@
 package main
 
 type User struct {
-	id string
+	id       string
 	username string
-	inbox []*Message
-	app *App
+	inbox    []*Message
+	app      *App
 }
 
 func (user *User) login(a *App) {
