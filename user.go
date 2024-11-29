@@ -25,6 +25,17 @@ func (user *User) receiveMessage(message *Message) {
 	user.inbox = append(user.inbox, message)
 }
 
-func (user *User) readMessage(messageID int) {
-
+func (user *User) readMessage(messageID string) {
+	if user.app != nil {
+		var message *Message
+		for _, msg := range user.inbox {
+			if msg.id == messageID {
+				message = msg
+			}
+		}
+		if message != nil {
+			message.markRead()
+			message.log()
+		}
+	}
 }
