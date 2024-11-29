@@ -14,7 +14,7 @@ func (user *User) login(a *App) {
 
 func (user *User) sendMessage(recipientId string, content string) {
 	if user.app != nil {
-		var recipient *User = user.app.findUser(recipientId)
+		var recipient = user.app.findUser(recipientId)
 		if recipient != nil {
 			user.app.deliverMessage(user.id, recipientId, content)
 		}
@@ -22,9 +22,9 @@ func (user *User) sendMessage(recipientId string, content string) {
 }
 
 func (user *User) receiveMessage(message *Message) {
-
+	user.inbox = append(user.inbox, message)
 }
 
-func (user *User) readMessage(idx int) {
+func (user *User) readMessage(messageID int) {
 
 }
