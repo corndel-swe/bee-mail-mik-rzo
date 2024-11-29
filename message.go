@@ -24,5 +24,5 @@ func (message *Message) markDelivered() {
 }
 
 func (message *Message) markRead() {
-
+	message.read = true
 }
