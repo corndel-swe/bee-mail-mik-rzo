@@ -12,11 +12,11 @@ func (user *User) login(a *App) {
 	app.addUser(user)
 }
 
-func (user *User) sendMessage(recipientId string, content string) {
+func (user *User) sendMessage(recipientID string, content string) {
 	if user.app != nil {
-		var recipient = user.app.findUser(recipientId)
+		var recipient = user.app.findUser(recipientID)
 		if recipient != nil {
-			user.app.deliverMessage(user.id, recipientId, content)
+			user.app.deliverMessage(user.id, recipientID, content)
 		}
 	}
 }

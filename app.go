@@ -14,18 +14,18 @@ func (app *App) addUser(user *User) {
 	fmt.Printf("application state: \n%+v", *app)
 }
 
-func (app *App) findUser(userId string) *User {
+func (app *App) findUser(userID string) *User {
 	for _, user := range app.users {
-		if user.id == userId {
+		if user.id == userID {
 			return user
 		}
 	}
 	return nil
 }
 
-func (app *App) deliverMessage(senderId string, recipientId string, content string) {
-	sender := app.findUser(senderId)
-	recipient := app.findUser(recipientId)
+func (app *App) deliverMessage(senderID string, recipientID string, content string) {
+	sender := app.findUser(senderID)
+	recipient := app.findUser(recipientID)
 	message := Message{generateID(), time.Now(), content, sender, recipient, false, false}
 	recipient.receiveMessage(&message)
 	message.markDelivered()
