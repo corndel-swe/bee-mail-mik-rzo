@@ -15,6 +15,19 @@ type Message struct {
 	read      bool
 }
 
+func (message *Message) String() string {
+	return fmt.Sprintf(
+		"Message ID: %s\nTimestamp: %s\nFrom: %s\nTo: %s\nDelivered: %t\nRead: %t\nContent: %s\n",
+		message.id,
+		message.timestamp.Format(time.RFC1123),
+		message.from.username,
+		message.to.username,
+		message.delivered,
+		message.read,
+		message.content,
+	)
+}
+
 func (message *Message) log() {
 	fmt.Printf("%+v", message)
 }
