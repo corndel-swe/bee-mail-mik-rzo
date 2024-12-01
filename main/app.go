@@ -24,7 +24,7 @@ func (app *App) findUser(userID string) *User {
 func (app *App) deliverMessage(senderID string, recipientID string, content string) {
 	sender := app.findUser(senderID)
 	recipient := app.findUser(recipientID)
-	message := Message{generateID(), time.Now(), content, sender, recipient, false, false}
+	message := Message{GenerateID(), time.Now(), content, sender, recipient, false, false}
 	recipient.receiveMessage(&message)
 	message.markDelivered()
 }

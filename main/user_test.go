@@ -6,7 +6,7 @@ import (
 )
 
 func TestLogin(t *testing.T) {
-	mike := User{generateID(), "mike", make([]*Message, 0), nil}
+	mike := User{GenerateID(), "mike", make([]*Message, 0), nil}
 	beeMail := App{make([]*User, 0)}
 
 	mike.login(&beeMail)
@@ -16,8 +16,8 @@ func TestLogin(t *testing.T) {
 
 func TestSendMessage(t *testing.T) {
 	assert := assert.New(t)
-	mike := User{generateID(), "mike", make([]*Message, 0), nil}
-	charlie := User{generateID(), "charlie", make([]*Message, 0), nil}
+	mike := User{GenerateID(), "mike", make([]*Message, 0), nil}
+	charlie := User{GenerateID(), "charlie", make([]*Message, 0), nil}
 	beeMail := App{make([]*User, 0)}
 	mike.login(&beeMail)
 	charlie.login(&beeMail)
@@ -35,8 +35,8 @@ func TestSendMessage(t *testing.T) {
 }
 
 func TestReadMessage(t *testing.T) {
-	mike := User{generateID(), "mike", make([]*Message, 0), nil}
-	charlie := User{generateID(), "charlie", make([]*Message, 0), nil}
+	mike := User{GenerateID(), "mike", make([]*Message, 0), nil}
+	charlie := User{GenerateID(), "charlie", make([]*Message, 0), nil}
 	beeMail := App{make([]*User, 0)}
 	mike.login(&beeMail)
 	charlie.login(&beeMail)

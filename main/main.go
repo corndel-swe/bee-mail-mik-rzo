@@ -6,6 +6,6 @@ import (
 
 func main() {}
 
-func generateID() string {
+func GenerateID() string {
 	return shortid.MustGenerate()
 }
