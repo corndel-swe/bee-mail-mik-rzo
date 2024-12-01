@@ -27,14 +27,15 @@ func TestSendMessage(t *testing.T) {
 
 	assert.NotNil(message.id, "Message should have an id.")
 	assert.NotNil(message.timestamp, "Message should have an timestamp.")
-	assert.Equal("hello charlie", message.content, "Message content should match 'hello charlie'.")
 	assert.Equal(&mike, message.from, "Message should be from 'mike'.")
 	assert.Equal(&charlie, message.to, "Message should be to 'charlie'.")
+	assert.Equal("hello charlie", message.content, "Message content should match 'hello charlie'.")
 	assert.Equal(true, message.delivered, "Message should be delivered.")
 	assert.Equal(false, message.read, "Message should not be read.")
 }
 
 func TestReadMessage(t *testing.T) {
+	assert := assert.New(t)
 	mike := User{GenerateID(), "mike", make([]*Message, 0), nil}
 	charlie := User{GenerateID(), "charlie", make([]*Message, 0), nil}
 	beeMail := App{make([]*User, 0)}
@@ -45,5 +46,11 @@ func TestReadMessage(t *testing.T) {
 	message := charlie.inbox[0]
 	charlie.readMessage(message.id)
 
-	assert.Equal(t, true, message.read, "Message should be read.")
+	assert.NotNil(message.id, "Message should have an id.")
+	assert.NotNil(message.timestamp, "Message should have an timestamp.")
+	assert.Equal(&mike, message.from, "Message should be from 'mike'.")
+	assert.Equal(&charlie, message.to, "Message should be to 'charlie'.")
+	assert.Equal("hello charlie", message.content, "Message content should match 'hello charlie'.")
+	assert.Equal(true, message.delivered, "Message should be delivered.")
+	assert.Equal(true, message.read, "Message should be read.")
 }
