@@ -8,8 +8,8 @@ type User struct {
 }
 
 func (user *User) login(a *App) {
-	app := a
-	app.addUser(user)
+	user.app = a
+	a.addUser(user)
 }
 
 func (user *User) sendMessage(recipientID string, content string) {
