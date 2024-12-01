@@ -33,3 +33,17 @@ func TestSendMessage(t *testing.T) {
 	assert.Equal(true, message.delivered, "Message should be delivered.")
 	assert.Equal(false, message.read, "Message should not be read.")
 }
+
+func TestReadMessage(t *testing.T) {
+	mike := User{generateID(), "mike", make([]*Message, 0), nil}
+	charlie := User{generateID(), "charlie", make([]*Message, 0), nil}
+	beeMail := App{make([]*User, 0)}
+	mike.login(&beeMail)
+	charlie.login(&beeMail)
+
+	mike.sendMessage(charlie.id, "hello charlie")
+	message := charlie.inbox[0]
+	charlie.readMessage(message.id)
+
+	assert.Equal(t, true, message.read, "Message should be read.")
+}
