@@ -29,7 +29,7 @@ func (message *Message) String() string {
 }
 
 func (message *Message) log() {
-	fmt.Printf("%+v", message)
+	fmt.Printf("%s", message)
 }
 
 func (message *Message) markDelivered() {
