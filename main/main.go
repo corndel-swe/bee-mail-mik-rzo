@@ -10,7 +10,7 @@ func main() {
 	usernames := []string{"mike", "charlie", "meron", "damian", "james", "pablo", "hala", "anna", "john"}
 	var users []*User = nil
 	for _, username := range usernames {
-		user := User{GenerateID(), username, make([]*Message, 0), nil}
+		user := User{GenerateID(), username, make([]MessageInterface, 0), nil}
 		user.login(&beeMail)
 		users = append(users, &user)
 	}
@@ -20,7 +20,7 @@ func main() {
 
 	mike.sendMessage(charlie.id, "hello charlie")
 
-	message := charlie.inbox[0]
+	message := charlie.inbox[0].(*Message)
 	charlie.readMessage(message.id)
 }
 

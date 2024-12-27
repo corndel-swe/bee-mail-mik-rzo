@@ -7,7 +7,7 @@ import (
 
 func TestAddUser(t *testing.T) {
 	beeMail := App{make([]*User, 0)}
-	mike := User{GenerateID(), "mike", make([]*Message, 0), nil}
+	mike := User{GenerateID(), "mike", make([]MessageInterface, 0), nil}
 
 	beeMail.addUser(&mike)
 
