@@ -27,10 +27,19 @@ func (user *User) receiveMessage(message MessageInterface) {
 
 func (user *User) readMessage(messageID string) {
 	if user.app != nil {
-		var message *Message
+		var message MessageInterface
 		for _, value := range user.inbox {
-			if value.(*Message).id == messageID {
-				message = value.(*Message)
+			switch value.(type) {
+			case *Message:
+				if value.(*Message).id == messageID {
+					message = value.(*Message)
+					break
+				}
+			case *MessageAdapter:
+				if value.(*MessageAdapter).message.id == messageID {
+					message = value.(*MessageAdapter)
+					break
+				}
 			}
 		}
 		if message != nil {
