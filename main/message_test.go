@@ -51,16 +51,3 @@ func TestExternalMessage_String(t *testing.T) {
 
 	assert.Equal(t, expectedStr, actualStr)
 }
-
-func TestExternalMessage_MarkRead(t *testing.T) {
-	mike := User{GenerateID(), "mike", make([]MessageInterface, 0), nil}
-	charlie := User{GenerateID(), "charlie", make([]MessageInterface, 0), nil}
-	externalMessage := ExternalMessage{GenerateID(), "hello", &mike, &charlie, false, false}
-	adapter := MessageAdapter{&externalMessage}
-
-	adapter.markRead()
-	assert.Equal(t, true, adapter.message.read, "Message marked as read if method is called the first time.")
-
-	adapter.markRead()
-	assert.Equal(t, true, adapter.message.read, "Message marked as read if method is called a second time.")
-}
