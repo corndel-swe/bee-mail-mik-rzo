@@ -5,6 +5,13 @@ import (
 	"time"
 )
 
+type MessageInterface interface {
+	String() string
+	log()
+	markDelivered()
+	markRead()
+}
+
 type Message struct {
 	id        string
 	timestamp time.Time
